@@ -4,11 +4,11 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
   selector: 'lib-dynamic-forms',
-  template: `<formly-form
-    *ngIf="form"
-    [form]="form"
-    [fields]="fields"
-  ></formly-form>`,
+  template: `
+  <lib-dynamic-form-to-view *ngIf="mode=='view'" [fields]="fields" [form]="form"></lib-dynamic-form-to-view>
+  <lib-dynamic-form-to-edit *ngIf="mode=='edit'" [fields]="fields" [form]="form"></lib-dynamic-form-to-edit>
+  <button *ngIf="mode=='view'" (click)="mode='edit'">Change Mode<button>
+    `,
   styles: [],
 })
 export class DynamicFormsComponent {
@@ -16,4 +16,7 @@ export class DynamicFormsComponent {
   fields: FormlyFieldConfig[] = [];
   @Input()
   form: FormGroup = new FormGroup({});
+
+  mode = 'view';
+
 }
