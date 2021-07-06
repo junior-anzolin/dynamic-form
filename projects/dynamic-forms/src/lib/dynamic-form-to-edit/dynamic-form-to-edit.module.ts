@@ -5,10 +5,11 @@ import { DynamicFormToEditComponent } from './dynamic-form-to-edit.component';
 import { FormlyModule } from '@ngx-formly/core';
 
 import types from '../themes/types/types';
-import { InputComponent } from '../themes/types/input/input.component';
+import wrappers from '../themes/wrappers/wrapper';
+import { InputType } from '../themes/types/input/input.type';
 
 @NgModule({
-  declarations: [DynamicFormToEditComponent, InputComponent],
+  declarations: [DynamicFormToEditComponent, InputType],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -17,6 +18,7 @@ import { InputComponent } from '../themes/types/input/input.component';
         { name: 'required', message: 'Este campo é obrigatório' },
       ],
       types,
+      wrappers,
     }),
   ],
   exports: [DynamicFormToEditComponent],
