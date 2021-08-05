@@ -1,8 +1,10 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DynamicFormToEditComponent } from './dynamic-form-to-edit.component';
-import { FormlyModule } from '@ngx-formly/core';
+import { FormlyFormBuilder, FormlyModule, FORMLY_CONFIG } from '@ngx-formly/core';
+import { FormlyConfig } from '@ngx-formly/core';
+import { ConfigOption, TypeOption } from '@ngx-formly/core/lib/services/formly.config';
 
 @NgModule({
   declarations: [
@@ -17,4 +19,21 @@ import { FormlyModule } from '@ngx-formly/core';
     DynamicFormToEditComponent
   ]
 })
-export class DynamicFormToEditModule { }
+export class DynamicFormToEditModule {
+  static forRoot(): ModuleWithProviders<DynamicFormToEditModule> {
+    return {
+      providers: [
+        {
+            provide: FORMLY_CONFIG,
+            useFactory: (config: TypeOption) => {
+            return config;
+          },
+          multi: true,
+          deps: ['DYNAMIC_FORMS_EDIT'],
+        },
+      ],
+      ngModule: DynamicFormToEditModule,
+    };
+  }
+}
+
