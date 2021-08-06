@@ -1,6 +1,5 @@
-import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { ModuleWithProviders, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { DynamicFormsComponent } from './dynamic-forms.component';
-import { ConfigOption, FormlyModule } from '@ngx-formly/core';
 import { DynamicFormToEditModule } from './dynamic-form-to-edit/dynamic-form-to-edit.module';
 import { DynamicFormToViewModule } from './dynamic-form-to-view/dynamic-form-to-view.module';
 import { CommonModule } from '@angular/common';
@@ -22,8 +21,8 @@ export class DynamicFormsModule {
   static forRoot(config: DynamicFormConfig): ModuleWithProviders<DynamicFormsModule> {
     return {
       providers: [
-        { provide: 'DYNAMIC_FORMS_EDIT', useValue: new DynamicFormConfigProvider(config).toFormlyConfig('edit') },
-        { provide: 'DYNAMIC_FORMS_VIEW', useValue: new DynamicFormConfigProvider(config).toFormlyConfig('view') },
+        { provide: 'DYNAMIC_FORMS_EDIT', useValue: new DynamicFormConfigProvider(config).toFormlyConfig('edit'), multi: true },
+        { provide: 'DYNAMIC_FORMS_VIEW', useValue: new DynamicFormConfigProvider(config).toFormlyConfig('view'), multi: true },
       ],
       ngModule: DynamicFormsModule,
     };
