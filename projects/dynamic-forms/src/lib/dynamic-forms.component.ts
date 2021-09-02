@@ -3,6 +3,11 @@ import { FormGroup } from '@angular/forms';
 import { FormlyConfig, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlyConfigRoot } from './formly-config-tenant';
 
+export enum FormMode {
+  VIEW = 'view',
+  EDIT = 'edit',
+}
+
 @Component({
   selector: 'lib-dynamic-forms',
   template: `

@@ -7,6 +7,10 @@ import { FormlyConfig } from '@ngx-formly/core';
 import { ConfigOption } from '@ngx-formly/core/lib/services/formly.config';
 import { FormlyConfigRoot } from '../formly-config-tenant';
 
+import types from '../themes/types/types';
+import wrappers from '../themes/wrappers/wrapper';
+import { InputType } from '../themes/types/input/input.type';
+
 @NgModule({
   providers: [
     FormlyFormBuilder,
@@ -19,9 +23,7 @@ import { FormlyConfigRoot } from '../formly-config-tenant';
     ReactiveFormsModule,
     FormlyModule,
   ],
-  exports: [
-    DynamicFormToEditComponent
-  ]
+  exports: [DynamicFormToEditComponent],
 })
 export class DynamicFormToEditModule {
   static forRoot(): ModuleWithProviders<DynamicFormToEditModule> {
@@ -43,5 +45,3 @@ export class DynamicFormToEditModule {
     configs.forEach((config) => configService.addConfig(config));
   }
 }
-
-

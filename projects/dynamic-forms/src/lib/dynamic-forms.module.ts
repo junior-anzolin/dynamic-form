@@ -13,9 +13,7 @@ import { DynamicFormConfig, DynamicFormConfigProvider } from './dynamic-form-con
     DynamicFormToViewModule.forRoot(),
   ],
   exports: [DynamicFormsComponent],
-  schemas: [
-    NO_ERRORS_SCHEMA
-  ]
+  schemas: [NO_ERRORS_SCHEMA],
 })
 export class DynamicFormsModule {
   static forRoot(config: DynamicFormConfig): ModuleWithProviders<DynamicFormsModule> {
