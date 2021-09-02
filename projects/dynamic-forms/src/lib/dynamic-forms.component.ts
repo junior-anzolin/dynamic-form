@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormlyFieldConfig } from '@ngx-formly/core';
+import { FormlyConfig, FormlyFieldConfig } from '@ngx-formly/core';
+import { FormlyConfigRoot } from './formly-config-tenant';
 
 export enum FormMode {
   VIEW = 'view',
@@ -10,43 +11,32 @@ export enum FormMode {
 @Component({
   selector: 'lib-dynamic-forms',
   template: `
-    <lib-dynamic-form-to-view
-      *ngIf="mode === FormMode.VIEW"
-      [fields]="fields"
-      [form]="form"
-    ></lib-dynamic-form-to-view>
-    <lib-dynamic-form-to-edit
-      *ngIf="mode === FormMode.EDIT"
-      [fields]="fields"
-      [form]="form"
-    ></lib-dynamic-form-to-edit>
-    <button (click)="changeMode()">Change Mode</button>
-  `,
+  <lib-dynamic-form-to-view *ngIf="mode$=='view'" [fields]="fields" [form]="form"></lib-dynamic-form-to-view>
+  <lib-dynamic-form-to-edit *ngIf="mode$=='edit'" [fields]="fields" [form]="form"></lib-dynamic-form-to-edit>
+  <button *ngIf="mode$=='edit'" (click)="changeMode()">Change Mode<button>
+    `,
   styles: [],
 })
 export class DynamicFormsComponent {
   @Input()
-  fields: FormlyFieldConfig[] = [];
+  fields: FormlyFieldConfig[] = [
+    {
+      key: 'firstname',
+      type: 'test-type',
+    },
+  ];
   @Input()
   form: FormGroup = new FormGroup({});
 
-  mode: FormMode = FormMode.VIEW;
-
-  get FormMode() {
-    return FormMode;
+  mode$ = 'edit';
+  @Input()
+  set mode(value: 'edit' | 'view') {
+    (this.formlyConfig as FormlyConfigRoot).setTenant(value);
+    this.mode$ = value;
   }
-
+  constructor(public formlyConfig: FormlyConfig,) {
+  }
   changeMode() {
-    switch (this.mode) {
-      case FormMode.EDIT:
-        this.mode = FormMode.VIEW;
-        break;
-      case FormMode.VIEW:
-        this.mode = FormMode.EDIT;
-        break;
-      default:
-        this.mode = FormMode.VIEW;
-        break;
-    }
+    this.mode = 'view';
   }
 }
