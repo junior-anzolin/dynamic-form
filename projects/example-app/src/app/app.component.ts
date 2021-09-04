@@ -18,7 +18,8 @@ export class AppComponent implements OnInit {
           key: 'name',
           type: 'input',
           templateOptions: {
-            label: 'Name',
+            label: 'Email',
+            type: 'email',
           },
         },
       ],

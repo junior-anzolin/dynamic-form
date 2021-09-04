@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DynamicFormsTypeInput } from './dynamic-forms-type-input.type';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { DynamicFormsModule } from 'projects/dynamic-forms/src/lib/dynamic-forms.module';
 import { DynamicFormsResumeSimple } from '../dynamic-forms-resume-simple';

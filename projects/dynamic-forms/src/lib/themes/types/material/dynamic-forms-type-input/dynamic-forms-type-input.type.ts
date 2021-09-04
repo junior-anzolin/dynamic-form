@@ -1,40 +1,55 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { FieldType } from '@ngx-formly/core';
 
 @Component({
   selector: 'lib-dynamic-forms-type-input',
   template: `
-    <input
-      *ngIf="type !== 'number'; else numberTmp"
-      matInput
-      [id]="id"
-      [type]="type || 'text'"
-      [readonly]="to.readonly"
-      [required]="to.required"
-      [errorStateMatcher]="errorStateMatcher"
-      [formControl]="formControl"
-      [formlyAttributes]="field"
-      [tabIndex]="to.tabindex"
-      [placeholder]="to.placeholder"
-    />
-    <ng-template #numberTmp>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>{{ to?.label }}</mat-label>
       <input
+        *ngIf="type !== 'number'; else numberTmp"
         matInput
         [id]="id"
-        type="number"
-        [readonly]="to.readonly"
-        [required]="to.required"
-        [errorStateMatcher]="errorStateMatcher"
-        [formControl]="formControl"
-        [formlyAttributes]="field"
-        [tabIndex]="to.tabindex"
-        [placeholder]="to.placeholder"
+        [type]="type || 'text'"
+        [readonly]="to?.readonly ?? false"
+        [required]="to?.required ?? false"
+        [formControl]="internalFormControl"
+        [tabIndex]="to?.tabindex ?? 0"
+        [placeholder]="to?.placeholder ?? ''"
       />
-    </ng-template>
+      <ng-template #numberTmp>
+        <input
+          matInput
+          [id]="id"
+          type="number"
+          [readonly]="to?.readonly ?? false"
+          [required]="to?.required ?? false"
+          [formControl]="internalFormControl"
+          [tabIndex]="to?.tabindex ?? 0"
+          [placeholder]="to?.placeholder ?? ''"
+        />
+      </ng-template>
+      <mat-error
+        *ngIf="
+          internalFormControl.hasError('email') &&
+          !internalFormControl.hasError('required')
+        "
+      >
+        Por favor insira um endereço de email válido
+      </mat-error>
+      <mat-error *ngIf="internalFormControl.hasError('required')">
+        {{ to?.label }} é <strong>obrigatório</strong>
+      </mat-error>
+    </mat-form-field>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DynamicFormsTypeInput extends FieldType {
+  get internalFormControl(): FormControl {
+    return (this.formControl as FormControl) ?? new FormControl();
+  }
+
   get type() {
     return this.to.type ?? 'text';
   }
