@@ -5,18 +5,15 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 @Component({
   selector: 'lib-dynamic-form-to-view',
   templateUrl: './dynamic-form-to-view.component.html',
-  styleUrls: ['./dynamic-form-to-view.component.css']
+  styleUrls: ['./dynamic-form-to-view.component.css'],
 })
 export class DynamicFormToViewComponent implements OnInit {
-
   @Input()
   fields: FormlyFieldConfig[] = [];
   @Input()
   form: FormGroup = new FormGroup({});
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

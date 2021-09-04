@@ -12,11 +12,16 @@ export class AppComponent implements OnInit {
 
   fields: FormlyFieldConfig[] = [
     {
-      key: 'name',
-      type: 'input',
-      templateOptions: {
-        label: 'Name',
-      },
+      wrappers: ['stepper-vertical'],
+      fieldGroup: [
+        {
+          key: 'name',
+          type: 'input',
+          templateOptions: {
+            label: 'Name',
+          },
+        },
+      ],
     },
   ];
   form: FormGroup = new FormGroup({});

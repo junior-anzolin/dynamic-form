@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DynamicFormToViewComponent } from './dynamic-form-to-view.component';
+import { DynamicFormsResumeSimple } from './dynamic-forms-resume-simple.resume';
 
-describe('DynamicFormToViewComponent', () => {
-  let component: DynamicFormToViewComponent;
-  let fixture: ComponentFixture<DynamicFormToViewComponent>;
+describe('DynamicFormsResumeSimple', () => {
+  let component: DynamicFormsResumeSimple;
+  let fixture: ComponentFixture<DynamicFormsResumeSimple>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DynamicFormToViewComponent],
+      declarations: [DynamicFormsResumeSimple],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DynamicFormToViewComponent);
+    fixture = TestBed.createComponent(DynamicFormsResumeSimple);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
