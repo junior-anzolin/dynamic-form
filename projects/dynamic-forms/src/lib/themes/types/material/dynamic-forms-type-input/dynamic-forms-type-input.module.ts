@@ -1,12 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DynamicFormsTypeInput } from './dynamic-forms-type-input.type';
-import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { DynamicFormsModule } from 'projects/dynamic-forms/src/lib/dynamic-forms.module';
-import { DynamicFormsResumeSimple } from '../dynamic-forms-resume-simple';
-import { DynamicFormsResumeSimpleModule } from '../dynamic-forms-resume-simple';
-import { DynamicFormsWrapperStepperVerticalModule } from '../../../wrappers/material/dynamic-forms-wrapper-stepper-vertical/dynamic-forms-wrapper-stepper-vertical.module';
+import {
+  DynamicFormsResumeSimple,
+  DynamicFormsResumeSimpleModule,
+} from '../dynamic-forms-resume-simple';
+import { DynamicFormsTypeInput } from './dynamic-forms-type-input.type';
 
 @NgModule({
   declarations: [DynamicFormsTypeInput],
@@ -15,7 +16,6 @@ import { DynamicFormsWrapperStepperVerticalModule } from '../../../wrappers/mate
     ReactiveFormsModule,
     MatInputModule,
     DynamicFormsResumeSimpleModule,
-    DynamicFormsWrapperStepperVerticalModule,
 
     DynamicFormsModule.forChild({
       types: [

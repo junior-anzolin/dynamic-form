@@ -5,7 +5,7 @@ import { FieldType } from '@ngx-formly/core';
 @Component({
   selector: 'lib-dynamic-forms-type-input',
   template: `
-    <mat-form-field class="example-full-width" appearance="fill">
+    <mat-form-field class="full-width" appearance="standard">
       <mat-label>{{ to?.label }}</mat-label>
       <input
         *ngIf="type !== 'number'; else numberTmp"
@@ -43,6 +43,7 @@ import { FieldType } from '@ngx-formly/core';
       </mat-error>
     </mat-form-field>
   `,
+  styles: ['.full-width {width: 100%;}'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DynamicFormsTypeInput extends FieldType {
