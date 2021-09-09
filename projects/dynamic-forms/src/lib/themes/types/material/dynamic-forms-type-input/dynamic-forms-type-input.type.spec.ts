@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DynamicFormToViewComponent } from './dynamic-form-to-view.component';
+import { DynamicFormsTypeInput } from './dynamic-forms-type-input.type';
 
-describe('DynamicFormToViewComponent', () => {
-  let component: DynamicFormToViewComponent;
-  let fixture: ComponentFixture<DynamicFormToViewComponent>;
+describe('DynamicFormsTypeInput', () => {
+  let component: DynamicFormsTypeInput;
+  let fixture: ComponentFixture<DynamicFormsTypeInput>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DynamicFormToViewComponent],
+      declarations: [DynamicFormsTypeInput],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DynamicFormToViewComponent);
+    fixture = TestBed.createComponent(DynamicFormsTypeInput);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

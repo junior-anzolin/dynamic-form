@@ -11,20 +11,23 @@ export enum FormMode {
 @Component({
   selector: 'lib-dynamic-forms',
   template: `
-  <lib-dynamic-form-to-view *ngIf="mode$=='view'" [fields]="fields" [form]="form"></lib-dynamic-form-to-view>
-  <lib-dynamic-form-to-edit *ngIf="mode$=='edit'" [fields]="fields" [form]="form"></lib-dynamic-form-to-edit>
-  <button *ngIf="mode$=='edit'" (click)="changeMode()">Change Mode<button>
-    `,
+    <lib-dynamic-form-to-view
+      *ngIf="mode$ == 'view'"
+      [fields]="fields"
+      [form]="form"
+    ></lib-dynamic-form-to-view>
+    <lib-dynamic-form-to-edit
+      *ngIf="mode$ == 'edit'"
+      [fields]="fields"
+      [form]="form"
+    ></lib-dynamic-form-to-edit>
+    <button *ngIf="mode$ == 'edit'" (click)="changeMode()">Change Mode</button>
+  `,
   styles: [],
 })
 export class DynamicFormsComponent {
   @Input()
-  fields: FormlyFieldConfig[] = [
-    {
-      key: 'firstname',
-      type: 'test-type',
-    },
-  ];
+  fields: FormlyFieldConfig[] = [];
   @Input()
   form: FormGroup = new FormGroup({});
 
@@ -34,8 +37,7 @@ export class DynamicFormsComponent {
     (this.formlyConfig as FormlyConfigRoot).setTenant(value);
     this.mode$ = value;
   }
-  constructor(public formlyConfig: FormlyConfig,) {
-  }
+  constructor(public formlyConfig: FormlyConfig) {}
   changeMode() {
     this.mode = 'view';
   }

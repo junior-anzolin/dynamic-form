@@ -12,11 +12,104 @@ export class AppComponent implements OnInit {
 
   fields: FormlyFieldConfig[] = [
     {
-      key: 'name',
-      type: 'input',
-      templateOptions: {
-        label: 'Name',
-      },
+      type: 'stepper',
+      templateOptions: { orientation: 'vertical' },
+      fieldGroup: [
+        {
+          templateOptions: { label: 'Personal data' },
+          fieldGroup: [
+            {
+              key: 'firstname',
+              type: 'input',
+              templateOptions: {
+                label: 'First name',
+                required: true,
+              },
+            },
+            {
+              key: 'age',
+              type: 'input',
+              templateOptions: {
+                type: 'number',
+                label: 'Age',
+                required: true,
+              },
+            },
+          ],
+        },
+        {
+          templateOptions: { label: 'Second' },
+          fieldGroup: [
+            {
+              key: 'firstname1',
+              type: 'input',
+              templateOptions: {
+                label: 'First name',
+                required: true,
+              },
+            },
+            {
+              key: 'age1',
+              type: 'input',
+              templateOptions: {
+                type: 'number',
+                label: 'Age',
+                required: true,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: 'stepper',
+      templateOptions: { orientation: 'horizontal' },
+      fieldGroup: [
+        {
+          templateOptions: { label: 'Personal data' },
+          fieldGroup: [
+            {
+              key: 'firstname',
+              type: 'input',
+              templateOptions: {
+                label: 'First name',
+                required: true,
+              },
+            },
+            {
+              key: 'age',
+              type: 'input',
+              templateOptions: {
+                type: 'number',
+                label: 'Age',
+                required: true,
+              },
+            },
+          ],
+        },
+        {
+          templateOptions: { label: 'Second' },
+          fieldGroup: [
+            {
+              key: 'firstname1',
+              type: 'input',
+              templateOptions: {
+                label: 'First name',
+                required: true,
+              },
+            },
+            {
+              key: 'age1',
+              type: 'input',
+              templateOptions: {
+                type: 'number',
+                label: 'Age',
+                required: true,
+              },
+            },
+          ],
+        },
+      ],
     },
   ];
   form: FormGroup = new FormGroup({});

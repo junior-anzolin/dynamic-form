@@ -1,21 +1,24 @@
-import { FormlyFieldConfig, FormlyFormBuilder, FormlyModule, FORMLY_CONFIG } from '@ngx-formly/core';
-import { FormlyConfig } from '@ngx-formly/core';
-import { ConfigOption, TypeOption, ValidatorOption, WrapperOption } from '@ngx-formly/core/lib/services/formly.config';
-import { FormlyFieldConfigCache } from '@ngx-formly/core/lib/components/formly.field.config';
 import { Injectable } from '@angular/core';
+import { FormlyConfig, FormlyFieldConfig } from '@ngx-formly/core';
+import { FormlyFieldConfigCache } from '@ngx-formly/core/lib/components/formly.field.config';
+import {
+  ConfigOption,
+  TypeOption,
+  ValidatorOption,
+  WrapperOption,
+} from '@ngx-formly/core/lib/services/formly.config';
 
 @Injectable({
-  providedIn: 'any'
+  providedIn: 'any',
 })
 export class FormlyConfigRoot extends FormlyConfig {
-
   view: FormlyConfig = new FormlyConfig();
   tenant: 'view' | 'edit' = 'edit';
   constructor() {
     super();
   }
   addConfig(config: ConfigOption, tenant: 'view' | 'edit' = 'edit') {
-    if(tenant == 'view') {
+    if (tenant == 'view') {
       return this.view.addConfig(config);
     }
     return super.addConfig(config);
@@ -24,7 +27,7 @@ export class FormlyConfigRoot extends FormlyConfig {
     this.tenant = tenant;
   }
   setType(options: TypeOption | TypeOption[]) {
-    if(this.tenant == 'view') {
+    if (this.tenant == 'view') {
       return this.view.setType(options);
     }
     return super.setType(options);
@@ -35,10 +38,10 @@ export class FormlyConfigRoot extends FormlyConfig {
     }
     return super.getType(name);
   }
-  getMergedField(field?: FormlyFieldConfig,) {
+  getMergedField(field?: FormlyFieldConfig) {
     return super.getMergedField(field);
   }
-  resolveFieldTypeRef(field?: FormlyFieldConfigCache,) {
+  resolveFieldTypeRef(field?: FormlyFieldConfigCache) {
     return super.resolveFieldTypeRef(field);
   }
   setWrapper(options: WrapperOption) {

@@ -5,18 +5,15 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 @Component({
   selector: 'lib-dynamic-form-to-edit',
   templateUrl: './dynamic-form-to-edit.component.html',
-  styleUrls: ['./dynamic-form-to-edit.component.css']
+  styleUrls: ['./dynamic-form-to-edit.component.css'],
 })
 export class DynamicFormToEditComponent implements OnInit {
-
   @Input()
   fields: FormlyFieldConfig[] = [];
   @Input()
   form: FormGroup = new FormGroup({});
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
